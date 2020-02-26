@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Connect to our database
-const dbURL = "mongodb+srv://admin:admin321@cluster0-zlho7.mongodb.net/test?retryWrites=true&w=majority"// your db url
+const dbURL = process.env.DB_URL // your db url
 mongoose.connect(
     dbURL,
     {useNewUrlParser: true, useUnifiedTopology: true}
@@ -65,7 +65,7 @@ app.get(
 
 // Liste to the port
 app.listen(
-    3010, // connect to this port
+    process.env.PORT || 3010, // connect to this port
     () => {
         console.log('you are connected');
     } // do this when you're connected
